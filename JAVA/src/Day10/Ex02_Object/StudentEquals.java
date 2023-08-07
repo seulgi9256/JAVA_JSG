@@ -11,7 +11,11 @@ class Student{
 		// equals 오버라이딩
 		@Override
 		public boolean equals(Object obj) {
+			// obj가 student 클래스가 아니면, 다른 객체
 			Student student2 = (Student) obj;
+			if(!(obj instanceof Student))
+				return false;
+			
 			// 학번이 같으면 같은 학생
 			if( this.studentId == student2.studentId) {
 				return true;
@@ -39,9 +43,9 @@ class Student{
 				System.out.println("student 와 student2 의 주소가 다릅니다.");	
 			
 			if( student.equals(student2) )
-				System.out.println("student 와 student2는 같습니다.");
+				System.out.println("student 와 student2는 같은 학생입니다.");
 			else
-				System.out.println("student 와 student2는 다릅니다.");
+				System.out.println("student 와 student2는 다른 학생입니다.");
 			
 			// ---------------------
 			if( student == student3 )
@@ -50,9 +54,9 @@ class Student{
 				System.out.println("student 와 student3 의 주소가 다릅니다.");	
 			
 			if( student.equals(student3) )
-				System.out.println("student 와 student3는 같습니다.");
+				System.out.println("student 와 student3는 같은 학생입니다.");
 			else
-				System.out.println("student 와 student3는 다릅니다.");	
+				System.out.println("student 와 student3는 다른 학생입니다.");	
 			
 		}
 	}
