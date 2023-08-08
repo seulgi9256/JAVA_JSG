@@ -64,6 +64,11 @@ public class CalendarEx {
 		System.out.println("1970년1월1일~종강날짜까지 일 수 : " + testT);
 		System.out.println("D-day : " + (testT-nowT) + "일");
 
+		if(now.before(test)) {
+			System.out.println("종강 전입니다.");
+		} else if(now.after(test)) {
+			System.out.println("수업이 종료된 강의입니다.");
+		}
 		
 	}
 }
