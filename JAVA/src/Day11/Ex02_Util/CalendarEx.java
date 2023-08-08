@@ -44,5 +44,26 @@ public class CalendarEx {
 		Calendar now = Calendar.getInstance();
 		printCalendar("현재 ", now);
 		
+		Calendar test = Calendar.getInstance();
+		// 월(MONTH) : 0~11 (1월~12월)
+		test.set(2024, Calendar.JANUARY, 24);
+		
+		// 오늘 ~ 종강일 D-day
+		// getTimeInMillis() : 날짜를 ms(밀리초) 단위까지 숫자로 반환
+		// 1970년 1월 1일 0시 0분 0초 0ms 부터 카운트한 숫자를 반환
+		// 0.001초 		:	1ms
+		// 60초 			:	1분
+		// 60분 			:	1시간
+		// 24시 			:	1일
+		long nowT = now.getTimeInMillis() / (1000*60*60*24);
+		long testT = test.getTimeInMillis() / (1000*60*60*24);
+		
+		System.out.println(nowT);
+		System.out.println(testT);
+		System.out.println("1970년1월1일~오늘날짜까지 일 수 : " + nowT);
+		System.out.println("1970년1월1일~종강날짜까지 일 수 : " + testT);
+		System.out.println("D-day : " + (testT-nowT) + "일");
+
+		
 	}
 }
