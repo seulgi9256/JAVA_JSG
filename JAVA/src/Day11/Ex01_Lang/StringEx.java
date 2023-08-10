@@ -30,6 +30,14 @@ public class StringEx {
 			System.out.println(i + " \t" + sp[i]);
 		}
 		
+		
+		for (int i = 0; i < str1.length(); i++) {
+			char ch = str1.charAt(i);
+			System.out.print(ch + " ");
+		}
+		System.out.println();
+		
+		
 		String cal = "10+20";
 		String[] num = cal.split("\\+");			// 정규표현식의 + 기호
 		System.out.println("피연산자1 : " + num[0]);
