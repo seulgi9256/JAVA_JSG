@@ -2,12 +2,17 @@ package Day13.Ex01_Collection;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Vector;
 
 public class VectorEx {
 	
 	public static void printList(List<?> list) {
 		
+		if( list == null || list.isEmpty() ) {
+			System.out.println("요소가 없습니다.");
+			return;
+		}
 		Iterator<?> it = list.iterator();
 		
 		while(it.hasNext()) {
@@ -25,7 +30,7 @@ public class VectorEx {
 		
 		// 벡터 객체 생성
 		Vector<String> vector = new Vector<String>(10);
-				
+		
 		// 요소 추가
 		vector.add("아메리카노");
 		vector.add("청포도에이드");
@@ -95,6 +100,50 @@ public class VectorEx {
 		System.out.println();
 		System.out.println(" 삭제 후 출력");
 		printList(vector);
+		System.out.println("------------------------------------------");
 		
+		// 컬렉션.isEmpty() : 요소가 하나도 없으면 true, 비어있지 않으면 false 
+		if( vector.isEmpty()) {
+			System.out.println("메뉴가 없습니다.");
+		}
+		else {
+			printList(vector);
+		}
+		Scanner sc = new Scanner(System.in);
+		List<String> newMenuList = new Vector<String>();
+		System.out.println("메뉴 추가하기 (종료 : 0)");
+		
+		do {
+			System.out.print("추가메뉴 : ");
+			String menu = sc.nextLine();
+			if( menu.equals("0")) break;
+			newMenuList.add(menu);
+		}while(true);
+		
+		System.out.println("##### [vector] #####");
+		printList(vector);
+		System.out.println("##### [newMenuList] #####");
+		printList(newMenuList);
+		
+		vector.addAll(newMenuList);	// vector <- newMenuList 모두 추가
+		System.out.println("##### [vector] #####");
+		printList(vector);
+		
+		sc.close();
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
