@@ -46,7 +46,8 @@ public class CalendarEx {
 		
 		Calendar test = Calendar.getInstance();
 		// 월(MONTH) : 0~11 (1월~12월)
-		test.set(2024, Calendar.JANUARY, 24);
+		test.set(2024, Calendar.JANUARY, 24);			  // 2024.1.24
+		test.set(2024, Calendar.JANUARY, 24, 11, 30, 20); // 2024.1.24 11시 30분 20초 
 		
 		// 오늘 ~ 종강일 D-day
 		// getTimeInMillis() : 날짜를 ms(밀리초) 단위까지 숫자로 반환
