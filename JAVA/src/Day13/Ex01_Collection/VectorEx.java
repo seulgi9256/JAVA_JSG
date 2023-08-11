@@ -5,6 +5,25 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
+/*
+ 
+ 	List 인터페이스
+ 	- 요소 추가
+ 	add(E)				: 맨 끝에 추가
+ 	add(index, E)		: index 추가
+ 	add(index, E)		: index 요소를 E로 지정(변경)
+ 	
+ 	- 요소 검색
+ 	get(index)			: index 에 있는 요소를 반환
+ 	contains(Object)	: 요소의 포함 여부 (true/false) 
+ 	isEmpty()			: 컬렉션이 비어있는지 여부 (true/false)
+ 	size()				: 지정된 요소의 개수 반환
+ 	
+ 	- 요소 삭제
+ 	remove(index)		: index에 있는 요소 삭제
+ 	remove(Object)		: 지정된 객체 요소를 삭제
+ 	clear()				: 전체 삭제
+ */
 public class VectorEx {
 	
 	public static void printList(List<?> list) {
@@ -13,6 +32,7 @@ public class VectorEx {
 			System.out.println("요소가 없습니다.");
 			return;
 		}
+		
 		Iterator<?> it = list.iterator();
 		
 		while(it.hasNext()) {
@@ -76,6 +96,7 @@ public class VectorEx {
 		while(it.hasNext()) {
 			String item = it.next();
 			System.out.print(item);
+			
 			if(it.hasNext()) System.out.print(", "); // 뒤에 남아있는 요소가 있으면
 			else System.out.println();
 		}

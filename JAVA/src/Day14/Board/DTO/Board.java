@@ -1,6 +1,5 @@
-package Day07.Ex05_BoardInterface;
+package Day14.Board.DTO;
 
-import Day07.Ex05_BoardInterface.Text;
 
 public class Board extends Text{
 

@@ -1,4 +1,4 @@
-package Day07.Ex05_BoardInterface;
+package Day14.Board.DAO;
 
 import java.sql.SQLException;
 
@@ -8,7 +8,7 @@ import Day07.Ex05_BoardInterface.Main;
 import Day07.Ex05_BoardInterface.Text;
 import Day14.Board.DTO.Comment;
 
-public class CommentAccess extends JDBConnection implements DataService {
+public class CommentDAO extends JDBConnection implements DataService {
 
 	// 데이터 목록 조회
 	public Text[] selectList() {
