@@ -2,12 +2,6 @@ package Day07.Ex05_BoardInterface;
 
 import java.sql.SQLException;
 
-import Day07.Ex05_BoardInterface.DataService;
-import Day07.Ex05_BoardInterface.JDBConnection;
-import Day07.Ex05_BoardInterface.Main;
-import Day07.Ex05_BoardInterface.Text;
-import Day14.Board.DTO.Comment;
-
 public class CommentAccess extends JDBConnection implements DataService {
 
 	// 데이터 목록 조회

@@ -1,10 +1,14 @@
 package Day14.Board.DAO;
 
+import java.util.List;
+
+import Day14.Board.DTO.Text;
+
 public interface DataService {
 	
-	Text[] selectList();
+	List<? extends Text> selectList();
 	
-	Text[] selectList(int boardNo);
+	List<? extends Text> selectList(int no);
 	
 	Text select(int no);
 	

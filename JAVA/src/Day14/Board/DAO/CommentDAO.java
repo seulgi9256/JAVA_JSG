@@ -1,20 +1,18 @@
 package Day14.Board.DAO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import Day07.Ex05_BoardInterface.DataService;
-import Day07.Ex05_BoardInterface.JDBConnection;
-import Day07.Ex05_BoardInterface.Main;
-import Day07.Ex05_BoardInterface.Text;
 import Day14.Board.DTO.Comment;
+import Day14.Board.DTO.Text;
 
 public class CommentDAO extends JDBConnection implements DataService {
 
 	// 데이터 목록 조회
-	public Text[] selectList() {
+	public List<? extends Text> selectList() {
 		
-		int max = Main.max;
-		Comment[] commentList = new Comment[max];
+		List<Comment> commentList = new ArrayList<Comment>();
 		
 		// SQL
 		String sql = " SELECT * "
@@ -24,7 +22,6 @@ public class CommentDAO extends JDBConnection implements DataService {
 			stmt = con.createStatement();		// 쿼리 실행 객체 생성
 			rs = stmt.executeQuery(sql);		// 쿼리 실행 - 결과-->rs (ResultSet)
 			
-			int i = 0;
 			// 조회 결과를 배열에 추가
 			while( rs.next() ) {
 				Comment comment = new Comment();
@@ -38,8 +35,7 @@ public class CommentDAO extends JDBConnection implements DataService {
 				comment.setRegDate( rs.getTimestamp("reg_date") );
 				comment.setUpdDate( rs.getTimestamp("upd_date") );
 				
-				if( i >= max ) break;
-				commentList[i++] = comment;
+				commentList.add(comment);
 			}
 			
 		} catch (SQLException e) {
@@ -50,10 +46,9 @@ public class CommentDAO extends JDBConnection implements DataService {
 	}
 	
 	// 특정 글에 해당하는 댓글 데이터 목록 조회
-	public Text[] selectList(int boardNo) {
+	public List<? extends Text> selectList(int boardNo) {
 		
-		int max = Main.max;
-		Comment[] commentList = new Comment[max];
+		List<Comment> commentList = new ArrayList<Comment>();
 		
 		// SQL
 		String sql = " SELECT * "
@@ -65,7 +60,6 @@ public class CommentDAO extends JDBConnection implements DataService {
 			psmt.setInt(1, boardNo);				// 1번 ? 에 글번호를 매핑
 			rs = psmt.executeQuery();				// 쿼리 실행 - 결과-->rs (ResultSet)
 			
-			int i = 0;
 			// 조회 결과를 배열에 추가
 			while( rs.next() ) {
 				Comment comment = new Comment();
@@ -79,8 +73,7 @@ public class CommentDAO extends JDBConnection implements DataService {
 				comment.setRegDate( rs.getTimestamp("reg_date") );
 				comment.setUpdDate( rs.getTimestamp("upd_date") );
 				
-				if( i >= max ) break;
-				commentList[i++] = comment;
+				commentList.add(comment);
 			}
 			
 		} catch (SQLException e) {

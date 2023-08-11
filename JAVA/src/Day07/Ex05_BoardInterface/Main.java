@@ -3,11 +3,6 @@ package Day07.Ex05_BoardInterface;
 import java.util.Date;
 import java.util.Scanner;
 
-import Day14.Board.DAO.BoardDAO;
-import Day14.Board.DAO.CommentDAO;
-import Day14.Board.DTO.Board;
-import Day14.Board.DTO.Comment;
-
 /**
  * 게시판 프로그램
  * - 메뉴판
@@ -23,8 +18,8 @@ public class Main {
 	static Text[] boardList = new Board[max];			// 게시글 목록
 	static Text[] commentList = new Comment[max];		// 댓글 목록
 	static Scanner sc = new Scanner(System.in);
-	static DataService data = new BoardDAO();		// 데이터 베이스 접근 객체 (게시글)
-	static DataService data2 = new CommentDAO();		// 데이터 베이스 접근 객체 (댓글)
+	static DataService data = new BoardAccess();		// 데이터 베이스 접근 객체 (게시글)
+	static DataService data2 = new CommentAccess();		// 데이터 베이스 접근 객체 (댓글)
 	
 	/**
 	 * 메뉴판

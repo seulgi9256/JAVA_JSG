@@ -11,40 +11,37 @@ public class CommentServiceImpl implements CommentService{
 
 	@Override
 	public List<Comment> list() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Comment> commentList = (List<Comment>) commentDAO.selectList();
+		return commentList;
 	}
 	
 	@Override
 	public List<Comment> list(int boardNo) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Comment> commentList = (List<Comment>) commentDAO.selectList(boardNo);
+		return commentList;
 	}
 
 	@Override
 	public Comment select(int commentNo) {
-		// TODO Auto-generated method stub
-		return null;
+		Comment comment = (Comment) commentDAO.select(commentNo);
+		return comment;
 	}
 
 	@Override
 	public int insert(Comment comment) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = commentDAO.insert(comment);
+		return result;
 	}
 
 	@Override
 	public int update(Comment comment) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = commentDAO.update(comment);
+		return result;
 	}
 
 	@Override
-	public int delete(Comment comment) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int delete(int comment) {
+		int result = commentDAO.delete(comment);
+		return result;
 	}
-
-	
-
 }

@@ -59,19 +59,44 @@ public class Main {
 		System.out.println("##### 게시글 목록 #####");
 		boardList = boardService.list();
 		
-		for (Text board : boardList) {
-			if( board == null ) {
-				System.out.println("(게시글 없음)");
-				continue;
-			}
-			
-			int boardNo = board.getNo();
-			String title = board.getTitle();
-			String writer = board.getWriter();
-			Date regDate = board.getRegDate();
-			
-			System.out.println("(" + boardNo + ") \t | " + title + " \t | " + writer + " \t | " + regDate );
+		printAll(boardList);
+	}
+	/**
+	 * 글 목록 전체 출력 메소드
+	 * @param list
+	 */
+	public static void printAll(List<? extends Text> list) {
+		if( list == null || list.isEmpty() ) {
+			System.out.println("조회된 글이 없습니다.");
+			return;
 		}
+		
+		for(Text text : list) {
+			print(text);
+		}
+	}
+	
+	/**
+	 * 글 출력 메소드
+	 * @param text
+	 */
+	public static void print(Text text) {
+		int no = text.getNo();
+		String title = text.getTitle();
+		String writer =  text.getWriter();
+		String content = text.getContent();
+		Date regDate = text.getRegDate();
+		Date updDate = text.getUpdDate();
+		
+		
+		System.out.println("# 글번호 : " + no + " ##########################");
+		if( text instanceof Board) System.out.println("# 제목 : " + title);
+		System.out.println("# 작성자 : " + writer);
+		System.out.println("# " + content);
+		System.out.println("# - 등록일자 : " + regDate);
+		System.out.println("# - 수정일자 : " + updDate);
+		System.out.println("######################################");
+		System.out.println();
 	}
 	
 	/**
@@ -84,42 +109,14 @@ public class Main {
 		int boardNo = sc.nextInt();
 		Text board = boardService.select(boardNo);
 		
-		String title = board.getTitle();
-		String writer =  board.getWriter();
-		String content = board.getContent();
-		Date regDate = board.getRegDate();
-		Date updDate = board.getUpdDate();
-		
-		System.out.println("# 글번호 : " + boardNo + " ##########################");
-		System.out.println("# 제목 : " + title);
-		System.out.println("# 작성자 : " + writer);
-		System.out.println("# " + content);
-		System.out.println("# - 등록일자 : " + regDate);
-		System.out.println("# - 수정일자 : " + updDate);
-		System.out.println("######################################");
-		System.out.println();
-		
+		print(board);
+
 		// 해당 글의 댓글 목록
 		commentList = commentService.list(boardNo);
 		
 		System.out.println("----------- [댓글 목록] -----------");
-		for (Comment comment : commentList) {
-			if( commentList == null ) continue;
-			
-			int commentNo = comment.getNo();
-			String commentWriter = comment.getWriter();
-			String commentContent = comment.getContent();
-			Date commentRegDate = comment.getRegDate();
-			Date commentUpdDate = comment.getUpdDate();
-			
-			System.out.println("===========================================");
-			System.out.println("(" + commentNo + ") - [" + commentWriter + "]");
-			System.out.println("# : " + commentContent );
-			System.out.println("# - 등록일자 : " + commentRegDate);
-			System.out.println("# - 수정일자 : " + commentUpdDate);
-			System.out.println("===========================================");
+		printAll(commentList);
 		}
-	}
 	
 	/**
 	 * 게시글 쓰기
